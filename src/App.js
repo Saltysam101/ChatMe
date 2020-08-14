@@ -6,11 +6,10 @@ import {
   Redirect
 } from "react-router-dom";
 import Home from "./pages/Home";
-import Chat from "./pages/Chat";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { auth } from "./services/firebase";
-import "./styles.css";
+import "./App.css";
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (
@@ -21,7 +20,7 @@ function PrivateRoute({ component: Component, authenticated, ...rest }) {
           <Component {...props} />
         ) : (
             <Redirect
-              to={{ pathname: "/login", state: { from: props.location } }}
+              to={{ pathname: "/", state: { from: props.location } }}
             />
           )
       }
@@ -37,7 +36,7 @@ function PublicRoute({ component: Component, authenticated, ...rest }) {
         authenticated === false ? (
           <Component {...props} />
         ) : (
-            <Redirect to="/chat" />
+            <Redirect to="/home" />
           )
       }
     />
@@ -77,11 +76,10 @@ class App extends Component {
     ) : (
         <Router>
           <Switch>
-            <Route exact path="/" component={Home} />
             <PrivateRoute
-              path="/chat"
+              path="/home"
               authenticated={this.state.authenticated}
-              component={Chat}
+              component={Home}
             />
             <PublicRoute
               path="/signup"
@@ -89,7 +87,8 @@ class App extends Component {
               component={Signup}
             />
             <PublicRoute
-              path="/login"
+              exact
+              path="/"
               authenticated={this.state.authenticated}
               component={Login}
             />

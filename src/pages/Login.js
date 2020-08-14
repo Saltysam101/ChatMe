@@ -57,10 +57,7 @@ export default class Login extends Component {
           onSubmit={this.handleSubmit}
         >
           <h1>
-            Login to
-            <Link className="title ml-2" to="/chat">
-              ChatMe
-            </Link>
+            Login to ChatMe
           </h1>
           <p className="lead">
             Fill in the form below to login to your account.

@@ -1,5 +1,6 @@
 import { auth } from "../services/firebase";
 
+
 export function signup(email, password) {
     return auth().createUserWithEmailAndPassword(email, password);
 }
@@ -19,7 +20,6 @@ export function signInWithGitHub() {
 }
 
 export function logOut() {
-    alert('You have logged out of your account.')
     return auth().signOut();
     
 }

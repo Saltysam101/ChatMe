@@ -55,8 +55,7 @@ export default class SignUp extends Component {
       <div className="container">
         <form className="mt-5 py-5 px-5" onSubmit={this.handleSubmit}>
           <h1>
-            Sign Up to
-          <Link className="title ml-2" to="/">Chatty</Link>
+            Sign Up to ChatMe
           </h1>
           <p className="lead">Fill in the form below to create an account.</p>
           <div className="form-group">
@@ -77,7 +76,7 @@ export default class SignUp extends Component {
             Sign up with GitHub
           </button>
           <hr></hr>
-          <p>Already have an account? <Link to="/login">Login</Link></p>
+          <p>Already have an account? <Link to="/">Login</Link></p>
         </form>
       </div>
     )

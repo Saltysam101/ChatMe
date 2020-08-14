@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import Chat from "../pages/Chat";
 import {
-    signInWithGoogle, 
-    signInWithGitHub,
     logOut,
     signup
 } from '../helpers/auth';
@@ -18,8 +17,6 @@ export default class Home extends Component {
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.googleSignIn = this.googleSignIn.bind(this);
-        this.githubSignIn = this.githubSignIn.bind(this);
       }
     
       handleChange(event) {
@@ -38,22 +35,7 @@ export default class Home extends Component {
         }
       }
     
-      async googleSignIn() {
-        try {
-          await signInWithGoogle();
-        } catch (error) {
-          this.setState({ error: error.message });
-        }
-      }
     
-      async githubSignIn() {
-        try {
-          await signInWithGitHub();
-        } catch (error) {
-          console.log(error)
-          this.setState({ error: error.message });
-        }
-      }
       render() {
         return(
             <div>
@@ -62,16 +44,10 @@ export default class Home extends Component {
                 <form
           className="mt-5 py-5 px-5"
           autoComplete="off"
-          onSubmit={this.handleSubmit}
-        >
-          <h1>
-            Login to
-            <Link className="title ml-2" to="/login">
-              ChatMe
-            </Link>
-          </h1>
-          <p>Wanna log out?</p>
-          <button onClick={logOut}>logout</button>
+          onSubmit={this.handleSubmit}>
+            < Chat />
+          <p>Want to log out?</p>
+          <button onClick={logOut}><Link to="/">Log out</Link></button>
         </form> 
             </div>
         )
