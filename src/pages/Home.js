@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import {
     signInWithGoogle, 
     signInWithGitHub,
     logOut,
-    signin,
     signup
 } from '../helpers/auth';
-import { render } from '@testing-library/react';
+
 
 export default class Home extends Component {
     constructor() {
@@ -57,7 +57,22 @@ export default class Home extends Component {
       render() {
         return(
             <div>
-                <h1>Home Page</h1>
+                <h1>Welcome to ChatMe</h1>
+                <h3>A place where people can chat</h3>
+                <form
+          className="mt-5 py-5 px-5"
+          autoComplete="off"
+          onSubmit={this.handleSubmit}
+        >
+          <h1>
+            Login to
+            <Link className="title ml-2" to="/login">
+              ChatMe
+            </Link>
+          </h1>
+          <p>Wanna log out?</p>
+          <button onClick={logOut}>logout</button>
+        </form> 
             </div>
         )
     };

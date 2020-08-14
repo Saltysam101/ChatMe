@@ -19,5 +19,7 @@ export function signInWithGitHub() {
 }
 
 export function logOut() {
+    alert('You have logged out of your account.')
     return auth().signOut();
+    
 }
