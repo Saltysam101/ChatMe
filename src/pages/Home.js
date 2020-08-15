@@ -5,6 +5,7 @@ import {
     logOut,
     signup
 } from '../helpers/auth';
+import "../home.css";
 
 
 export default class Home extends Component {
@@ -39,16 +40,17 @@ export default class Home extends Component {
       render() {
         return(
             <div>
-                <h1>Welcome to ChatMe</h1>
+                <h1>Welcome to <span className="chatme">ChatMe</span></h1>
                 <h3>A place where people can chat</h3>
                 <form
-          className="mt-5 py-5 px-5"
-          autoComplete="off"
-          onSubmit={this.handleSubmit}>
-            < Chat />
-          <p>Want to log out?</p>
-          <button onClick={logOut}><Link to="/">Log out</Link></button>
-        </form> 
+                      autoComplete="off"
+                      onSubmit={this.handleSubmit}>
+                  < Chat />
+                  <div className="logout-container">
+                    <p>Want to log out?</p>
+                    <button className="logout-btn" onClick={logOut}><Link className="btn-text" to="/">Log out</Link></button>
+                  </div>
+                </form> 
             </div>
         )
     };

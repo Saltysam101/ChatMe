@@ -9,7 +9,7 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import { auth } from "./services/firebase";
-import "./App.css";
+
 
 function PrivateRoute({ component: Component, authenticated, ...rest }) {
   return (

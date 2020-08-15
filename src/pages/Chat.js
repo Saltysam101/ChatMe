@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { auth } from "../services/firebase";
 import { db } from "../services/firebase";
+import "../chat.css";
 
 export default class Chat extends Component {
     constructor(props){
@@ -53,20 +54,22 @@ export default class Chat extends Component {
         }
     }
 
+    
+
     render() {
         return (
             <div>
       <div className="chats">
         {this.state.chats.map(chat => {
-          return <p key={chat.timestamp}>{chat.content} <strong>{chat.email}</strong></p>
+          return ( <div> <strong className="user">{chat.email}</strong> <p className="message" key={chat.timestamp}>{chat.content}</p> </div>)
         })}
       </div>
       <form onSubmit={this.handleSubmit}>
-        <input onChange={this.handleChange} value={this.state.content}></input>
+        <input className="input" onChange={this.handleChange} value={this.state.content}></input>
         {this.state.error ? <p>{this.state.writeError}</p> : null}
-        <button type="submit">Send</button>
+        <button className="submit" type="submit">Send</button>
       </form>
-      <div>
+      <div className="userinfo">
         Login in as: <strong>{this.state.user.email}</strong>
       </div>
     </div>
